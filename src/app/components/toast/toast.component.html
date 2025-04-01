@@ -1,0 +1,15 @@
+<div class="position-relative d-flex justify-content-end">
+    <div class="position-sticky bottom-0 end-0 m-4">
+        @for (toast of toasts$ | async; track toast.mensaje) {
+        <div class="toast show align-items-center text-bg-{{toast.tipo}} border-0 mb-3" role="alert">
+            <div class="d-flex">
+                <div class="toast-body">
+                    {{ toast.mensaje }}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" (click)="cerrarToast(toast.mensaje)"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+        }
+    </div>
+</div>

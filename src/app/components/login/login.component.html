@@ -1,0 +1,26 @@
+<div class="w-100 d-flex justify-content-center align-items-center vh-100 glassmorphism">
+
+    <form class="form" style="width: 45%; height: auto;" (ngSubmit)="iniciarSesion()">
+        <div class="title">
+            Bienvenido 👋.<br><span>Inicia sesión para continuar</span>
+            <div class="toggle-switch">
+                <label class="switch-label">
+                    <input type="checkbox" class="checkbox" (change)="cambiarTema($event)">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <input type="email" [(ngModel)]="email" name="email" placeholder="Email" class="input w-100" required>
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Password" class="input w-100"
+            required>
+
+        @if (errorMessage) {
+        <div class="text-danger">{{ errorMessage }}</div>
+        }
+
+        <button type="submit" class="button-confirm mt-3 w-100 bg-success text-light">Iniciar Sesión</button>
+    </form>
+
+
+</div>

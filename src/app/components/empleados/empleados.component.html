@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid justify-content-center px-4">
+    <div class="d-flex mb-3 justify-content-between">
+        <div class="d-flex align-items-center">
+            <h3 class="m-0">Lista de Empleados</h3>
+        </div>
+
+        <div>
+            <button type="button" class="btn btn-success btn-lg fs-6 rounded-pill" routerLink="/agregarEmpleado">Agregar
+                Empleado</button>
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+        <input (input)="update($event)" type="text" class="form-control fs-6" placeholder="Buscar Empleado..."
+            aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+</div>
+
+<div class="container-fluid justify-content-center px-4 table-responsive">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col" class="fs-5">Id</th>
+                <th scope="col" class="fs-5">Nombre</th>
+                <th scope="col" class="fs-5">Puesto</th>
+                <th scope="col" class="fs-5">Fecha de ingreso</th>
+                <th scope="col" class="fs-5">Salario</th>
+                <th scope="col" class="fs-5">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of filtroEmpleados(); track item.id){
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.nombre}}</td>
+                <td>{{item.puesto}}</td>
+                <td>{{ item.fechaIngreso | date: 'dd/MM/yyyy' }}</td>
+                <td>{{ item.salario | currency: 'MXN' }}</td>
+                <td>
+                    <button routerLink="/editarEmpleado/{{item.id}}" type="button"
+                        class="btn btn-outline-primary m-1"><i class="bi bi-pencil-fill"></i></button>
+                    <button (click)="eliminarEmpleado(item.id)" type="button" class="btn btn-outline-danger m-1"><i
+                            class="bi bi-trash-fill"></i></button>
+                </td>
+            </tr>
+            }@empty {
+            <tr>
+                <td colspan="6" style="text-align: center;">
+                    No se encontro ningun empleado con el nombre "{{inputFilter}}"
+                </td>
+            </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

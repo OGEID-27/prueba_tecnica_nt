@@ -1,0 +1,19 @@
+<nav class="navbar bg-body-secondary m-3 rounded-4 ">
+    <div class="container-fluid d-flex flex-row">
+        <div class="toggle-switch m-2">
+            <label class="switch-label">
+                <input type="checkbox" class="checkbox" (change)="cambiarTema($event)">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <p class="navbar-brand m-2 fs-5">
+            <i class="bi bi-person-circle"></i>
+            Bienvenido <b>User</b> 👋.
+            <button class="btn btn-danger mx-3 rounded-pill" data-bs-toggle="tooltip" data-bs-placement="top"
+                title="Cerrar Sesión" (click)="cerrarSesion()">
+                <i class="bi bi-box-arrow-left"></i>
+            </button>
+
+        </p>
+    </div>
+</nav>
